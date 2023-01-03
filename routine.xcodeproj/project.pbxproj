@@ -13,6 +13,8 @@
 		778733E329647577001A2E28 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 778733E229647577001A2E28 /* Preview Assets.xcassets */; };
 		778733E529647577001A2E28 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778733E429647577001A2E28 /* Persistence.swift */; };
 		778733E829647577001A2E28 /* routine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 778733E629647577001A2E28 /* routine.xcdatamodeld */; };
+		778733F1296476E1001A2E28 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778733EF296476E1001A2E28 /* Item+CoreDataClass.swift */; };
+		778733F2296476E1001A2E28 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778733F0296476E1001A2E28 /* Item+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		778733E429647577001A2E28 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		778733E729647577001A2E28 /* routine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = routine.xcdatamodel; sourceTree = "<group>"; };
 		778733E929647577001A2E28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		778733EF296476E1001A2E28 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		778733F0296476E1001A2E28 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,8 @@
 		778733CF29647575001A2E28 = {
 			isa = PBXGroup;
 			children = (
+				778733EF296476E1001A2E28 /* Item+CoreDataClass.swift */,
+				778733F0296476E1001A2E28 /* Item+CoreDataProperties.swift */,
 				778733DA29647575001A2E28 /* routine */,
 				778733D929647575001A2E28 /* Products */,
 			);
@@ -145,6 +151,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				778733F2296476E1001A2E28 /* Item+CoreDataProperties.swift in Sources */,
+				778733F1296476E1001A2E28 /* Item+CoreDataClass.swift in Sources */,
 				778733E529647577001A2E28 /* Persistence.swift in Sources */,
 				778733DE29647575001A2E28 /* ContentView.swift in Sources */,
 				778733E829647577001A2E28 /* routine.xcdatamodeld in Sources */,
