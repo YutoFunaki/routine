@@ -10,44 +10,76 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.title, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-
+    
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.title!)")
-                    } label: {
-                        Text(item.title!)
+            VStack {
+                TabView {
+                    //朝
+                    List {
+                        ForEach(items) { item in
+                            NavigationLink {
+                                Text("Item at \(item.title!)")
+                            } label: {
+                                Text(item.title!)
+                            }
+                        }
+                        .onDelete(perform: deleteItems)
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            EditButton()
+                        }
+                        ToolbarItem {
+                            Button(action: addItem) {
+                                Label("Add Item", systemImage: "plus")
+                            }
+                        }
+                    }
+                    .tabItem {
+                        Image(systemName: "sun.haze")
+                    }
+                    
+                    //夜
+                    List {
+                        ForEach(items) { item in
+                            NavigationLink {
+                                Text("Item at \(item.title!)")
+                            } label: {
+                                Text(item.title!)
+                            }
+                        }
+                        .onDelete(perform: deleteItems)
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            EditButton()
+                        }
+                        ToolbarItem {
+                            Button(action: addItem) {
+                                Label("Add Item", systemImage: "plus")
+                            }
+                        }
+                    }
+                    .tabItem {
+                        Image(systemName: "moon")
                     }
                 }
-                .onDelete(perform: deleteItems)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-                .foregroundColor(.red)
         }
+        .navigationTitle("Routine")
     }
-
+    
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.title = String()
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -58,11 +90,11 @@ struct ContentView: View {
             }
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            
             do {
                 try viewContext.save()
             } catch {
