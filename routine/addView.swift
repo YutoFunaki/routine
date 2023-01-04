@@ -45,16 +45,16 @@ struct addView: View {
             }
         }
     }
-    private func addItem(){
-        let item = Item(context: viewContext)
-        item.title = title
-        item.updateAt = Date()
-        // 生成したインスタンスをCoreDataに保存する
-        try? viewContext.save()
+    //リストを追加する関数
+    private func addItem() {
+        let newItem = Item(context: viewContext)
+        newItem.title = title
+        newItem.updateAt = Date()
         
+        try? viewContext.save()
         presentation.wrappedValue.dismiss()
-        isPresented = true
     }
+    
     
     
     struct addView_Previews: PreviewProvider {
