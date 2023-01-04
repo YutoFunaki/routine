@@ -32,16 +32,7 @@ struct ContentView: View {
                         }
                         .onDelete(perform: deleteItems)
                     }
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            EditButton()
-                        }
-                        ToolbarItem {
-                            Button(action: addItem) {
-                                Label("Add Item", systemImage: "plus")
-                            }
-                        }
-                    }
+                    
                     .tabItem {
                         Image(systemName: "sun.haze")
                     }
@@ -64,22 +55,9 @@ struct ContentView: View {
         }
         
     }
-    func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.title = String()
-            
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
     
+    
+    //リストを削除する関数
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
@@ -97,18 +75,20 @@ struct ContentView: View {
 }
 
 
-
+//settingView(没案)
 struct setting: View{
     var body: some View {
         settingView()
     }
 }
 
+
 struct add: View{
     var body: some View {
         addView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
