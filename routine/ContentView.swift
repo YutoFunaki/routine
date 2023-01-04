@@ -70,10 +70,31 @@ struct ContentView: View {
                         Image(systemName: "moon")
                     }
                 }
+                .navigationTitle("Routine")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.large)
+                
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading){
+                        Button(action: {
+                            NavigationLink {
+                                
+                            }
+                        }) {
+                            Image(systemName: "gear")
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        Button(action: {}) {
+                            Image(systemName: "plus.app")
+                        }
+                    }
+                }
             }
         }
-        .navigationTitle("Routine")
+        
     }
+    
     
     private func addItem() {
         withAnimation {
