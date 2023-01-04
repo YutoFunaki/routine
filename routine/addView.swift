@@ -25,12 +25,7 @@ struct addView: View {
                 Button(action: {
                     isPresented = true
                 }){
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 5)
-                            .frame(width: 50,height: 30)
-                        Text("確定")
-                            .foregroundColor(.white)
-                    }
+                    
                 }
                 Spacer()
             }
@@ -39,21 +34,16 @@ struct addView: View {
             .navigationBarTitleDisplayMode(.large)
             
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading){
-                    Button(action: {
-                        isPresented = true
-                    }) {
-                        Text("キャンセル")
-                    }
-                    .fullScreenCover(isPresented: $isPresented) {
-                        ContentView()
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {addItem()}) {
+                        Text("保存")
                     }
                 }
             }
-            
-            
+            .fullScreenCover(isPresented: $isPresented) {
+                ContentView()
+            }
         }
-        
     }
     private func addItem(){
         let item = Item(context: viewContext)
@@ -63,12 +53,13 @@ struct addView: View {
         try? viewContext.save()
         
         presentation.wrappedValue.dismiss()
+        isPresented = true
     }
-}
-
-
-struct addView_Previews: PreviewProvider {
-    static var previews: some View {
-        addView()
+    
+    
+    struct addView_Previews: PreviewProvider {
+        static var previews: some View {
+            addView()
+        }
     }
 }
