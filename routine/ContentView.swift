@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @State private var isPresented: Bool = false
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.title, ascending: true)],
@@ -77,11 +78,12 @@ struct ContentView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading){
                         Button(action: {
-                            NavigationLink {
-                                
-                            }
+                            isPresented = true
                         }) {
                             Image(systemName: "gear")
+                        }
+                        .fullScreenCover(isPresented: $isPresented) { //フルスクリーンの画面遷移
+                            settingView()
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing){
@@ -138,5 +140,11 @@ private let itemFormatter: DateFormatter = {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
+
+struct setting: View{
+    var body: some View {
+        settingView()
     }
 }
