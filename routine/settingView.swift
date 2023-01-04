@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct settingView: View {
+    @State private var isPresented: Bool = false
     var body: some View {
         NavigationStack {
             VStack {
@@ -16,16 +17,29 @@ struct settingView: View {
             .navigationTitle("Setting")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitleDisplayMode(.large)
+            
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button(action: {
+                        isPresented = true
+                    }) {
+                        Text("変更")
+                    }
+                    .fullScreenCover(isPresented: $isPresented) { //フルスクリーンの画面遷移
+                        ContentView()
+                    }
+                }
+            }
+            
         }
         
     }
     
-}
-
-struct settingView_Previews: PreviewProvider {
-    static var previews: some View {
-        settingView()
+    struct settingView_Previews: PreviewProvider {
+        static var previews: some View {
+            settingView()
+        }
     }
+    
+    
 }
-
-

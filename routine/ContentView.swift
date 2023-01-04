@@ -47,48 +47,16 @@ struct ContentView: View {
                     }
                     
                     //夜
-                    List {
-                        ForEach(items) { item in
-                            NavigationLink {
-                                Text("Item at \(item.title!)")
-                            } label: {
-                                Text(item.title!)
-                            }
-                        }
-                        .onDelete(perform: deleteItems)
-                    }
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            EditButton()
-                        }
-                        ToolbarItem {
-                            Button(action: addItem) {
-                                Label("Add Item", systemImage: "plus")
-                            }
-                        }
-                    }
-                    .tabItem {
-                        Image(systemName: "moon")
-                    }
+                    
                 }
                 .navigationTitle("Routine")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarTitleDisplayMode(.large)
                 
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Button(action: {
-                            isPresented = true
-                        }) {
-                            Image(systemName: "gear")
-                        }
-                        .fullScreenCover(isPresented: $isPresented) { //フルスクリーンの画面遷移
-                            settingView()
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        Button(action: {}) {
-                            Image(systemName: "plus.app")
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: addView()) {
+                            Text("追加")
                         }
                     }
                 }
@@ -96,9 +64,7 @@ struct ContentView: View {
         }
         
     }
-    
-    
-    private func addItem() {
+    func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.title = String()
@@ -130,6 +96,19 @@ struct ContentView: View {
     }
 }
 
+
+
+struct setting: View{
+    var body: some View {
+        settingView()
+    }
+}
+
+struct add: View{
+    var body: some View {
+        addView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
@@ -140,11 +119,5 @@ private let itemFormatter: DateFormatter = {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
-
-struct setting: View{
-    var body: some View {
-        settingView()
     }
 }

@@ -16,6 +16,7 @@
 		778733F1296476E1001A2E28 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778733EF296476E1001A2E28 /* Item+CoreDataClass.swift */; };
 		778733F2296476E1001A2E28 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778733F0296476E1001A2E28 /* Item+CoreDataProperties.swift */; };
 		778733F6296564A4001A2E28 /* settingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778733F5296564A4001A2E28 /* settingView.swift */; };
+		778733F829657E59001A2E28 /* addView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778733F729657E59001A2E28 /* addView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		778733EF296476E1001A2E28 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		778733F0296476E1001A2E28 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		778733F5296564A4001A2E28 /* settingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingView.swift; sourceTree = "<group>"; };
+		778733F729657E59001A2E28 /* addView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				778733DB29647575001A2E28 /* routineApp.swift */,
 				778733DD29647575001A2E28 /* ContentView.swift */,
 				778733F5296564A4001A2E28 /* settingView.swift */,
+				778733F729657E59001A2E28 /* addView.swift */,
 				778733DF29647577001A2E28 /* Assets.xcassets */,
 				778733E429647577001A2E28 /* Persistence.swift */,
 				778733E929647577001A2E28 /* Info.plist */,
@@ -158,6 +161,7 @@
 				778733F1296476E1001A2E28 /* Item+CoreDataClass.swift in Sources */,
 				778733E529647577001A2E28 /* Persistence.swift in Sources */,
 				778733DE29647575001A2E28 /* ContentView.swift in Sources */,
+				778733F829657E59001A2E28 /* addView.swift in Sources */,
 				778733E829647577001A2E28 /* routine.xcdatamodeld in Sources */,
 				778733F6296564A4001A2E28 /* settingView.swift in Sources */,
 				778733DC29647575001A2E28 /* routineApp.swift in Sources */,
