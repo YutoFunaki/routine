@@ -12,6 +12,9 @@ struct addView: View {
     @Environment(\.presentationMode) var presentation
     @State private var isPresented: Bool = false
     @State private var title = ""
+    @State private var startTime = Date()
+    @State private var finishTime = Date()
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -22,11 +25,11 @@ struct addView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    isPresented = true
-                }){
+                DatePicker("開始時刻", selection: $startTime, displayedComponents: .hourAndMinute)
+                    .padding()
                     
-                }
+                DatePicker("終了時刻", selection: $startTime, displayedComponents: .hourAndMinute)
+                .padding()
                 Spacer()
             }
             .navigationTitle("追加")
@@ -49,7 +52,8 @@ struct addView: View {
     private func addItem() {
         let newItem = Item(context: viewContext)
         newItem.title = title
-        newItem.updateAt = Date()
+        newItem.startTime = startTime
+        newItem.finishTime = finishTime
         
         try? viewContext.save()
         presentation.wrappedValue.dismiss()

@@ -17,13 +17,15 @@ extension Item {
     }
 
     @NSManaged public var title: String?
-    @NSManaged public var updateAt: Date?
+    @NSManaged public var finishTime: Date?
+    @NSManaged public var startTime: Date?
 
 }
 
 extension Item : Identifiable {
     
-    public var stringUpdatedAt: String { dateFomatter(date: updateAt ?? Date()) }
+    public var stringStartTime: String { dateFomatter(date: startTime ?? Date()) }
+    public var stringFinishTime: String { dateFomatter(date: finishTime ?? Date()) }
     
     func dateFomatter(date: Date) -> String {
         let dateFormatter = DateFormatter()
