@@ -27,18 +27,22 @@ struct addView: View {
                 
                 DatePicker("開始時刻", selection: $startTime, displayedComponents: .hourAndMinute)
                     .padding()
-                    
-                DatePicker("終了時刻", selection: $startTime, displayedComponents: .hourAndMinute)
-                .padding()
                 Spacer()
+                DatePicker("終了時刻", selection: $finishTime, displayedComponents: .hourAndMinute)
+                    .padding()
+                Spacer()
+                
             }
+            .environment(\.editMode, .constant(.active))
             .navigationTitle("追加")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitleDisplayMode(.large)
             
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {addItem()}) {
+                    Button(action: {
+                        addItem()
+                    }) {
                         Text("保存")
                     }
                 }
@@ -48,6 +52,9 @@ struct addView: View {
             }
         }
     }
+    
+    
+    
     //リストを追加する関数
     private func addItem() {
         let newItem = Item(context: viewContext)

@@ -4,6 +4,6 @@
         <attribute name="finishTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <attribute name="updateAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="weekDay" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
 </model>

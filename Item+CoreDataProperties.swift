@@ -19,6 +19,7 @@ extension Item {
     @NSManaged public var title: String?
     @NSManaged public var finishTime: Date?
     @NSManaged public var startTime: Date?
+    @NSManaged public var weekDay: Date?
 
 }
 
@@ -26,6 +27,7 @@ extension Item : Identifiable {
     
     public var stringStartTime: String { dateFomatter(date: startTime ?? Date()) }
     public var stringFinishTime: String { dateFomatter(date: finishTime ?? Date()) }
+    public var stringWeekDay: String { dateFomatter(date: weekDay ?? Date()) }
     
     func dateFomatter(date: Date) -> String {
         let dateFormatter = DateFormatter()
