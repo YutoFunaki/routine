@@ -44,6 +44,7 @@ struct addView: View {
                     Button(action: {
                         addItem()
                         sendNotificationRequest()
+                        sendNotificationRequest2()
                     }) {
                         Text("保存")
                     }
