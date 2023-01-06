@@ -55,7 +55,7 @@ struct addView: View {
     //通知のやつ
     func sendNotificationRequest(){
         let content = UNMutableNotificationContent()
-        content.title = "\(title)の開始時刻です！"
+        content.title = "\(title)の開始時刻です"
         content.body = "頑張りましょう！"
         
         let dateComponent = Calendar.current.dateComponents([.hour,.minute], from: startTime)
@@ -67,7 +67,7 @@ struct addView: View {
     
     func sendNotificationRequest2(){
         let content = UNMutableNotificationContent()
-        content.title = "\(title)の終了時刻です！"
+        content.title = "\(title)の終了時刻です"
         content.body = "お疲れ様でした！"
         
         let dateComponent = Calendar.current.dateComponents([.hour,.minute], from: finishTime)

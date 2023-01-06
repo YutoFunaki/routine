@@ -11,6 +11,7 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var isPresented: Bool = false
+    private let dateFormatter = DateFormatter()
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.title, ascending: true)],
@@ -37,7 +38,8 @@ struct ContentView: View {
                     List {
                         ForEach(items) { item in
                             NavigationLink {
-                                Text("Item at \(item.title!)")
+                                Text("やること　\(item.title!)")
+                                Text("\(item.startTime!)")
                             } label: {
                                 Text(item.title!)
                             }
@@ -104,8 +106,8 @@ struct add: View{
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
+    formatter.dateStyle = .none
+    formatter.timeStyle = .short
     return formatter
 }()
 
