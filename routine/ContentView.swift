@@ -7,6 +7,8 @@
 
 import SwiftUI
 import CoreData
+import GoogleMobileAds
+import UIKit
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -48,13 +50,10 @@ struct ContentView: View {
                         .onDelete(perform: deleteItems)
                     }
                     
-                    .tabItem {
-                        Image(systemName: "sun.haze")
-                    }
-                    
                     //夜
                     
                 }
+                BannerAdView().frame(width: 320, height: 50)
                 .navigationTitle("Routine")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarTitleDisplayMode(.large)
@@ -89,6 +88,9 @@ struct ContentView: View {
         }
     }
 }
+
+
+
 
 
 //settingView(没案)
