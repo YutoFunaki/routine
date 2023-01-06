@@ -45,6 +45,8 @@ struct addView: View {
                         addItem()
                         sendNotificationRequest()
                         sendNotificationRequest2()
+                        sendNotificationRequest3()
+                        sendNotificationRequest4()
                     }) {
                         Text("保存")
                     }
@@ -65,6 +67,17 @@ struct addView: View {
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
+    func sendNotificationRequest3(){
+        let content = UNMutableNotificationContent()
+        content.title = "\(title)の開始時刻です"
+        content.body = "頑張りましょう！"
+        
+        let dateComponent = Calendar.current.dateComponents([.hour,.minute], from: startTime)
+        print(dateComponent)  // 以下に表示
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+    }
     
     func sendNotificationRequest2(){
         let content = UNMutableNotificationContent()
@@ -74,6 +87,17 @@ struct addView: View {
         let dateComponent = Calendar.current.dateComponents([.hour,.minute], from: finishTime)
         print(dateComponent)  // 以下に表示
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: true)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+    }
+    func sendNotificationRequest4(){
+        let content = UNMutableNotificationContent()
+        content.title = "\(title)の終了時刻です"
+        content.body = "お疲れ様でした！"
+        
+        let dateComponent = Calendar.current.dateComponents([.hour,.minute], from: finishTime)
+        print(dateComponent)  // 以下に表示
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
