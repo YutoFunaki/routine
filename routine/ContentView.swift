@@ -68,18 +68,7 @@ struct ContentView: View {
         
     }
     
-    func sendNotificationRequest(){
-        let content = UNMutableNotificationContent()
-        content.title = "通知のタイトル"
-        content.body = "通知の内容です"
-        
-        var dateComponent = Calendar.current.dateComponents([.hour,.minute], from: Date())
-        dateComponent.second! += 3
-        print(dateComponent)  // 以下に表示
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request)
-    }
+    
     
     //リストを削除する関数
     private func deleteItems(offsets: IndexSet) {
