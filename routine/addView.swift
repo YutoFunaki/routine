@@ -8,6 +8,11 @@
 import SwiftUI
 import CoreData
 
+struct weekDays: Hashable{
+    var number: Int
+}
+
+
 struct addView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentation
@@ -15,11 +20,15 @@ struct addView: View {
     @State private var title = ""
     @State private var startTime = Date()
     @State private var finishTime = Date()
+    @State private var weekDays = []
     
     
     var body: some View {
         NavigationStack {
             VStack {
+                
+                
+                
                 Spacer()
                 
                 TextField("やること", text: $title)
@@ -28,11 +37,11 @@ struct addView: View {
                 //Spacer()
                 
                 DatePicker("開始時刻", selection: $startTime, displayedComponents: .hourAndMinute)
-                    .datePickerStyle(.wheel)
+                    //.datePickerStyle(.wheel)
                     .padding()
                 //Spacer()
                 DatePicker("終了時刻", selection: $finishTime, displayedComponents: .hourAndMinute)
-                    .datePickerStyle(.wheel)
+                    //.datePickerStyle(.wheel)
                     .padding()
                 Spacer()
                 
