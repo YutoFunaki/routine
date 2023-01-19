@@ -53,7 +53,7 @@ struct ContentView: View {
                     //夜
                     
                 }
-                BannerAdView().frame(width: 320, height: 50)
+                //BannerAdView().frame(width: 320, height: 50)
                 .navigationTitle("Routine")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarTitleDisplayMode(.large)
