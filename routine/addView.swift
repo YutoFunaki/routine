@@ -25,11 +25,12 @@ struct addView: View {
                 TextField("やること", text: $title)
                     .padding()
                 
-                Spacer()
+                //Spacer()
                 
                 DatePicker("開始時刻", selection: $startTime, displayedComponents: .hourAndMinute)
+                    .DatePickerStyle(WheelPickerStyle())
                     .padding()
-                Spacer()
+                //Spacer()
                 DatePicker("終了時刻", selection: $finishTime, displayedComponents: .hourAndMinute)
                     .padding()
                 Spacer()
