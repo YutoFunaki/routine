@@ -14,6 +14,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var isPresented: Bool = false
     private let dateFormatter = DateFormatter()
+    private let center = UNUserNotificationCenter.current()
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.title, ascending: true)],
@@ -48,6 +49,7 @@ struct ContentView: View {
                             }
                         }
                         .onDelete(perform: deleteItems)
+                        
                     }
                     .tabItem {
                         Image(systemName: "sun.haze")
