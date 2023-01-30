@@ -49,10 +49,13 @@ struct ContentView: View {
                         }
                         .onDelete(perform: deleteItems)
                     }
-                    
+                    .tabItem {
+                        Image(systemName: "sun.haze")
+                    }
                     //夜
                     
                 }
+                
                 //BannerAdView().frame(width: 320, height: 50)
                 .navigationTitle("Routine")
                 .navigationBarTitleDisplayMode(.inline)

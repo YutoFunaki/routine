@@ -37,11 +37,11 @@ struct addView: View {
                 //Spacer()
                 
                 DatePicker("開始時刻", selection: $startTime, displayedComponents: .hourAndMinute)
-                    //.datePickerStyle(.wheel)
+                //.datePickerStyle(.wheel)
                     .padding()
                 //Spacer()
                 DatePicker("終了時刻", selection: $finishTime, displayedComponents: .hourAndMinute)
-                    //.datePickerStyle(.wheel)
+                //.datePickerStyle(.wheel)
                     .padding()
                 Spacer()
                 
