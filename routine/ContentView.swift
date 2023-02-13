@@ -84,7 +84,7 @@ struct ContentView: View {
             
             do {
                 let center = UNUserNotificationCenter.current()
-                center.removeAllPendingNotificationRequests()
+                center.removePendingNotificationRequests(withIdentifiers: [id.uuidString])
                 try viewContext.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
