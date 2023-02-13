@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 import GoogleMobileAds
 import UIKit
+import Foundation
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -44,6 +45,7 @@ struct ContentView: View {
                                 Text("やること　\(item.title!)")
                                 Text("開始時刻　\(item.startTime!)")
                                 Text("終了時刻　\(item.finishTime!)")
+                                
                             } label: {
                                 Text(item.title!)
                             }
@@ -83,7 +85,7 @@ struct ContentView: View {
             offsets.map { items[$0] }.forEach(viewContext.delete)
             
             do {
-                center.removePendingNotificationRequests(withIdentifiers: ["\(title)"])
+                center.removePendingNotificationRequests(withIdentifiers: ["\(\Item.title)"])
                 try viewContext.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
