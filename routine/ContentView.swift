@@ -83,8 +83,7 @@ struct ContentView: View {
             offsets.map { items[$0] }.forEach(viewContext.delete)
             
             do {
-                let center = UNUserNotificationCenter.current()
-                center.removePendingNotificationRequests(withIdentifiers: [id.uuidString])
+                center.removePendingNotificationRequests(withIdentifiers: [timerID.uuidString])
                 try viewContext.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
