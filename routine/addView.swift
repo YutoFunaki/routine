@@ -75,7 +75,7 @@ struct addView: View {
         let dateComponent = Calendar.current.dateComponents([.hour,.minute], from: startTime)
         print(dateComponent)  // 以下に表示
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
-        let request = UNNotificationRequest(identifier: timerID.uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "\(title)", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
     
@@ -87,7 +87,7 @@ struct addView: View {
         let dateComponent = Calendar.current.dateComponents([.hour,.minute], from: finishTime)
         print(dateComponent)  // 以下に表示
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
-        let request = UNNotificationRequest(identifier: timerID.uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "\(title)", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
     
