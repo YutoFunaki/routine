@@ -20,6 +20,8 @@ extension Item {
     @NSManaged public var finishTime: Date?
     @NSManaged public var startTime: Date?
     @NSManaged public var weekDay: Date?
+    @NSManaged public var timerID: UUID?
+    
 
 }
 

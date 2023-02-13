@@ -20,13 +20,13 @@ struct addView: View {
     @State private var title = ""
     @State private var startTime = Date()
     @State private var finishTime = Date()
+    @State private var timerID = UUID()
     @State private var weekDays = []
     
     
     var body: some View {
         NavigationStack {
             VStack {
-                
                 
                 
                 Spacer()
@@ -64,6 +64,7 @@ struct addView: View {
         }
     }
     
+    
     //通知のやつ
     func sendNotificationRequest(){
         let content = UNMutableNotificationContent()
@@ -95,6 +96,7 @@ struct addView: View {
         newItem.title = title
         newItem.startTime = startTime
         newItem.finishTime = finishTime
+        newItem.timerID = timerID
         
         try? viewContext.save()
         presentation.wrappedValue.dismiss()
