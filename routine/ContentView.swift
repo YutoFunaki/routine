@@ -85,7 +85,9 @@ struct ContentView: View {
             offsets.map { items[$0] }.forEach(viewContext.delete)
             
             do {
-                center.removePendingNotificationRequests(withIdentifiers: ["\(\Item.title)"])
+                center.removePendingNotificationRequests(withIdentifiers: ["\(startTime)"])
+                center.removePendingNotificationRequests(withIdentifiers: ["\(\Item.finishTime)"])
+                print((\Item.title))
                 try viewContext.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
