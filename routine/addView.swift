@@ -73,7 +73,7 @@ struct addView: View {
         
         let dateComponent = Calendar.current.dateComponents([.hour,.minute], from: startTime)
         print(dateComponent)  // 以下に表示
-        let trigger = UNCalendarNotificationTrigger(dateMatching: <#T##DateComponents#>, repeats: true)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }

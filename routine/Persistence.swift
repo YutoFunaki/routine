@@ -18,7 +18,7 @@ struct PersistenceController {
             newItem.title = String()
             newItem.startTime = Date()
             newItem.finishTime = Date()
-            newItem.weekDay = Date()
+            newItem.weekDay = NSNumber()
         }
         do {
             try viewContext.save()
