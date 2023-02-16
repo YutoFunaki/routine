@@ -43,8 +43,8 @@ struct ContentView: View {
                         ForEach(items) { item in
                             NavigationLink {
                                 Text("やること　\(item.title!)")
-                                Text("開始時刻　\(item.startHour!)")
-                                Text("終了時刻　\(item.finishHour!)")
+                                Text("開始時刻 \(item.startHour!):\(item.startMin!)")
+                                Text("終了時刻　\(item.finishHour!):\(item.finishMin!)")
                                 
                             } label: {
                                 Text(item.title!)

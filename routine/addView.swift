@@ -33,10 +33,14 @@ struct addView: View {
                 TextField("やること", text: $title)
                     .padding()
                 
+                //開始時刻の設定
                 HStack {
+                    
+                    Text("開始時刻")
+                    
                     Picker(selection: $startHour, label: Text("時")) {
                         ForEach(0 ..< 25) {i in
-                            Text("\(i)").tag(i)   // .tag()の指定は不要
+                            Text("\(i)").tag(i)
                         }
                     }
                     .frame(width: 60,height: 80)
@@ -46,19 +50,24 @@ struct addView: View {
                     
                     Picker(selection: $startMin, label: Text("分")) {
                         ForEach(0 ..< 61) {i in
-                            Text("\(i)").tag(i)   // .tag()の指定は不要
+                            Text("\(i)").tag(i)
                         }
                     }
                     .frame(width: 60,height: 80)
                     .pickerStyle(InlinePickerStyle())
                 }
                 //.datePickerStyle(.wheel)
-                    .padding()
+                .padding()
                 //Spacer()
+                
+                //終了時刻の設定
                 HStack {
+                    
+                    Text("終了時刻")
+                    
                     Picker(selection: $finishHour, label: Text("時")) {
                         ForEach(0 ..< 25) {i in
-                            Text("\(i)").tag(i)   // .tag()の指定は不要
+                            Text("\(i)").tag(i)
                         }
                     }
                     .frame(width: 60,height: 80)
@@ -75,7 +84,7 @@ struct addView: View {
                     .pickerStyle(InlinePickerStyle())
                 }
                 //.datePickerStyle(.wheel)
-                    .padding()
+                .padding()
                 Spacer()
                 
             }
