@@ -17,17 +17,19 @@ extension Item {
     }
 
     @NSManaged public var title: String?
-    @NSManaged public var finishTime: Date?
-    @NSManaged public var startTime: Date?
+    @NSManaged public var finishHour: NSNumber?
+    @NSManaged public var startHour: NSNumber?
     @NSManaged public var weekDay: NSNumber?
+    @NSManaged public var startMin: NSNumber?
+    @NSManaged public var finishMin: NSNumber?
     
 
 }
 
 extension Item : Identifiable {
     
-    public var stringStartTime: String { dateFomatter(date: startTime ?? Date()) }
-    public var stringFinishTime: String { dateFomatter(date: finishTime ?? Date()) }
+    //public var stringStartTime: String { dateFomatter(date: startTime ?? Date()) }
+    //public var stringFinishTime: String { dateFomatter(date: finishTime ?? Date()) }
     //public var stringWeekDay: String { dateFomatter(date: (weekDay ?? NSNumber()) ) }
     
     func dateFomatter(date: Date) -> String {

@@ -19,10 +19,11 @@ struct addView: View {
     @Environment(\.presentationMode) var presentation
     @State private var isPresented: Bool = false
     @State private var title = ""
-    @State private var startTime = Date()
-    @State private var finishTime = Date()
-    @State private var weekDays = []
-    
+    @State private var startHour = 0
+    @State private var finishMin = 0
+    @State private var weekDays = 0
+    @State private var startMin = 0
+    @State private var finishMin = 0
     
     var body: some View {
         NavigationStack {
@@ -40,7 +41,7 @@ struct addView: View {
                 //.datePickerStyle(.wheel)
                     .padding()
                 //Spacer()
-                DatePicker("終了時刻", selection: $finishTime, displayedComponents: .hourAndMinute)
+                Picker("終了時刻", selection: $finishTime, displayedComponents: .hourAndMinute)
                 //.datePickerStyle(.wheel)
                     .padding()
                 Spacer()
@@ -96,6 +97,7 @@ struct addView: View {
         newItem.title = title
         newItem.startTime = startTime
         newItem.finishTime = finishTime
+        //newItem.weekDays = weekDays
         
         try? viewContext.save()
         presentation.wrappedValue.dismiss()
