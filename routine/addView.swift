@@ -35,27 +35,37 @@ struct addView: View {
                 TextField("やること", text: $title)
                     .padding()
                 
-                //Spacer()
-                
                 HStack {
-                    Picker(<#LocalizedStringKey#>, selection: $startHour) {
-                        tag(1)
+                    Picker(selection: $startHour, label: Text("時")) {
+                        ForEach(0 ..< 24) {i in
+                            tag(i)   // .tag()の指定は不要
+                        }
                     }
                     
-                    Picker(<#LocalizedStringKey#>, selection: $startMin) {
-                        tag(1)
+                    Text(":")
+                    
+                    Picker(selection: $startMin, label: Text("分")) {
+                        ForEach(0 ..< 60) {i in
+                            tag(i)   // .tag()の指定は不要
+                        }
                     }
                 }
                 //.datePickerStyle(.wheel)
                     .padding()
                 //Spacer()
                 HStack {
-                    Picker(<#LocalizedStringKey#>, selection: $finishHour){
-                        tag(1)
+                    Picker(selection: $finishHour, label: Text("時")) {
+                        ForEach(0 ..< 24) {i in
+                            tag(i)   // .tag()の指定は不要
+                        }
                     }
                     
-                    Picker(<#LocalizedStringKey#>, selection: $finishMin) {
-                        tag(1)
+                    Text(":")
+                    
+                    Picker(selection: $finishMin, label: Text("分")) {
+                        ForEach(0 ..< 60) {i in
+                            tag(i)   // .tag()の指定は不要
+                        }
                     }
                 }
                 //.datePickerStyle(.wheel)
