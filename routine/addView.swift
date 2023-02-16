@@ -20,7 +20,7 @@ struct addView: View {
     @State private var isPresented: Bool = false
     @State private var title = ""
     @State private var startHour = 0
-    @State private var finishMin = 0
+    @State private var finishHour = 0
     @State private var weekDays = 0
     @State private var startMin = 0
     @State private var finishMin = 0
@@ -37,11 +37,27 @@ struct addView: View {
                 
                 //Spacer()
                 
-                DatePicker("開始時刻", selection: $startTime, displayedComponents: .hourAndMinute)
+                HStack {
+                    Picker(<#LocalizedStringKey#>, selection: $startHour) {
+                        tag(1)
+                    }
+                    
+                    Picker(<#LocalizedStringKey#>, selection: $startMin) {
+                        tag(1)
+                    }
+                }
                 //.datePickerStyle(.wheel)
                     .padding()
                 //Spacer()
-                Picker("終了時刻", selection: $finishTime, displayedComponents: .hourAndMinute)
+                HStack {
+                    Picker(<#LocalizedStringKey#>, selection: $finishHour){
+                        tag(1)
+                    }
+                    
+                    Picker(<#LocalizedStringKey#>, selection: $finishMin) {
+                        tag(1)
+                    }
+                }
                 //.datePickerStyle(.wheel)
                     .padding()
                 Spacer()
@@ -72,7 +88,7 @@ struct addView: View {
         content.title = "\(title)の開始時刻です"
         content.body = "頑張りましょう！"
         
-        let dateComponent = Calendar.current.dateComponents([.hour,.minute], from: startTime)
+        let dateComponent = DateComponents(hour: startHour, minute: startMin)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
@@ -84,7 +100,7 @@ struct addView: View {
         content.title = "\(title)の終了時刻です"
         content.body = "お疲れ様でした！"
         
-        let dateComponent = Calendar.current.dateComponents([.hour,.minute], from: finishTime)
+        let dateComponent = DateComponents(hour: finishHour, minute: finishMin)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
@@ -95,8 +111,10 @@ struct addView: View {
     private func addItem() {
         let newItem = Item(context: viewContext)
         newItem.title = title
-        newItem.startTime = startTime
-        newItem.finishTime = finishTime
+        newItem.startHour = (startHour) as NSNumber
+        newItem.finishHour = (finishHour) as NSNumber
+        newItem.startMin = (startMin) as NSNumber
+        newItem.finishMin = (finishMin) as NSNumber
         //newItem.weekDays = weekDays
         
         try? viewContext.save()

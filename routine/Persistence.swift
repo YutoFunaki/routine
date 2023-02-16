@@ -16,9 +16,11 @@ struct PersistenceController {
         for _ in 0..<10 {
             let newItem = Item(context: viewContext)
             newItem.title = String()
-            newItem.startTime = Date()
-            newItem.finishTime = Date()
+            newItem.startHour = NSNumber()
+            newItem.finishHour = NSNumber()
             newItem.weekDay = NSNumber()
+            newItem.finishMin = NSNumber()
+            newItem.startMin = NSNumber()
         }
         do {
             try viewContext.save()
