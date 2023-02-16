@@ -9,9 +9,7 @@ import SwiftUI
 import CoreData
 import Foundation
 
-struct weekDays: Hashable{
-    var number: Int
-}
+
 
 
 struct addView: View {
@@ -37,36 +35,44 @@ struct addView: View {
                 
                 HStack {
                     Picker(selection: $startHour, label: Text("時")) {
-                        ForEach(0 ..< 24) {i in
-                            tag(i)   // .tag()の指定は不要
+                        ForEach(0 ..< 25) {i in
+                            Text("\(i)").tag(i)   // .tag()の指定は不要
                         }
                     }
+                    .frame(width: 60,height: 80)
+                    .pickerStyle(InlinePickerStyle())
                     
                     Text(":")
                     
                     Picker(selection: $startMin, label: Text("分")) {
-                        ForEach(0 ..< 60) {i in
-                            tag(i)   // .tag()の指定は不要
+                        ForEach(0 ..< 61) {i in
+                            Text("\(i)").tag(i)   // .tag()の指定は不要
                         }
                     }
+                    .frame(width: 60,height: 80)
+                    .pickerStyle(InlinePickerStyle())
                 }
                 //.datePickerStyle(.wheel)
                     .padding()
                 //Spacer()
                 HStack {
                     Picker(selection: $finishHour, label: Text("時")) {
-                        ForEach(0 ..< 24) {i in
-                            tag(i)   // .tag()の指定は不要
+                        ForEach(0 ..< 25) {i in
+                            Text("\(i)").tag(i)   // .tag()の指定は不要
                         }
                     }
+                    .frame(width: 60,height: 80)
+                    .pickerStyle(InlinePickerStyle())
                     
                     Text(":")
                     
                     Picker(selection: $finishMin, label: Text("分")) {
-                        ForEach(0 ..< 60) {i in
-                            tag(i)   // .tag()の指定は不要
+                        ForEach(0 ..< 61) {i in
+                            Text("\(i)").tag(i)
                         }
                     }
+                    .frame(width: 60,height: 80)
+                    .pickerStyle(InlinePickerStyle())
                 }
                 //.datePickerStyle(.wheel)
                     .padding()
