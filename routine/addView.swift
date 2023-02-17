@@ -85,6 +85,19 @@ struct addView: View {
                 }
                 //.datePickerStyle(.wheel)
                 .padding()
+                //Spacer()
+                
+                Picker(selection: $weekDays, label: Text("繰り返す曜日")) {
+                    Text("毎月曜日").tag(2)
+                    Text("毎火曜日").tag(3)
+                    Text("毎水曜日").tag(4)
+                    Text("毎木曜日").tag(5)
+                    Text("毎金曜日").tag(6)
+                    Text("毎土曜日").tag(7)
+                    Text("毎日曜日").tag(1)
+                }
+               
+                
                 Spacer()
                 
             }
@@ -113,7 +126,7 @@ struct addView: View {
         content.title = "\(title)の開始時刻です"
         content.body = "頑張りましょう！"
         
-        let dateComponent = DateComponents(hour: startHour, minute: startMin)
+        let dateComponent = DateComponents(hour: startHour, minute: startMin, weekday: $weekDays)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
