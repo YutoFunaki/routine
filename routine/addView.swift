@@ -126,7 +126,7 @@ struct addView: View {
         content.title = "\(title)の開始時刻です"
         content.body = "頑張りましょう！"
         
-        let dateComponent = DateComponents(hour: startHour, minute: startMin, weekday: $weekDays)
+        let dateComponent = DateComponents(hour: startHour, minute: startMin, weekday: weekDays)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
