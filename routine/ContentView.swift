@@ -43,7 +43,8 @@ struct ContentView: View {
                         ForEach(items) { item in
                             NavigationLink {
                                 Text("やること　\(item.title!)")
-                                Text("開始時刻 \(item.startHour!):\(item.startMin!)")
+                                    .frame(width: 300)
+                                Text("開始時刻   \(item.startHour!):\(item.startMin!)")
                                 Text("終了時刻　\(item.finishHour!):\(item.finishMin!)")
                                 
                             } label: {
@@ -82,10 +83,13 @@ struct ContentView: View {
     //リストを削除する関数
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { items[$0] }.forEach { item in
+                let identifier = "com.example.app.list." + (item.title ?? "")
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+                viewContext.delete(item)
+            }
             
             do {
-                center.removePendingNotificationRequests(withIdentifiers: [UUID().uuidString])
                 print((\Item.title))
                 try viewContext.save()
             } catch {
