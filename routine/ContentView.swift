@@ -47,6 +47,17 @@ struct ContentView: View {
                                 Text("開始時刻   \(item.startHour!):\(item.startMin!)")
                                 Text("終了時刻　\(item.finishHour!):\(item.finishMin!)")
                                 
+                                Button(action: {
+                                    if let title = item.title {
+                                        let identifier = "com.example.app.list." + title
+                                        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+                                    }
+                                    viewContext.delete(item)
+                                    try? viewContext.save()
+                                }) {
+                                    Text("削除")
+                                }
+                                
                             } label: {
                                 Text(item.title!)
                             }

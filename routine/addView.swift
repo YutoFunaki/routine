@@ -129,7 +129,7 @@ struct addView: View {
         let dateComponent = DateComponents(hour: startHour, minute: startMin, weekday: weekDays)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        let request = UNNotificationRequest(identifier: "com.example.app.list." + title, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "com.example.app.list.\(title)", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
     
@@ -141,7 +141,7 @@ struct addView: View {
         let dateComponent = DateComponents(hour: finishHour, minute: finishMin, weekday: weekDays)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        let request = UNNotificationRequest(identifier: "com.example.app.list." + title, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "com.example.app.list.\(title)", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
     
