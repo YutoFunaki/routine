@@ -21,6 +21,7 @@ struct PersistenceController {
             newItem.weekDay = NSNumber()
             newItem.finishMin = NSNumber()
             newItem.startMin = NSNumber()
+            newItem.id = UUID()
         }
         do {
             try viewContext.save()

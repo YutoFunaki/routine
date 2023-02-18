@@ -22,6 +22,8 @@ extension Item {
     @NSManaged public var weekDay: NSNumber?
     @NSManaged public var startMin: NSNumber?
     @NSManaged public var finishMin: NSNumber?
+    @NSManaged public var id: UUID?
+    
     
 
 }

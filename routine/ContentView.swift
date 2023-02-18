@@ -46,17 +46,7 @@ struct ContentView: View {
                                     .frame(width: 300)
                                 Text("開始時刻   \(item.startHour!):\(item.startMin!)")
                                 Text("終了時刻　\(item.finishHour!):\(item.finishMin!)")
-                                
-                                Button(action: {
-                                    if let title = item.title {
-                                        let identifier = "com.example.app.list." + title
-                                        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
-                                    }
-                                    viewContext.delete(item)
-                                    try? viewContext.save()
-                                }) {
-                                    Text("削除")
-                                }
+                
                                 
                             } label: {
                                 Text(item.title!)
@@ -95,8 +85,9 @@ struct ContentView: View {
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach { item in
-                let identifier = "com.example.app.list." + (item.title ?? "")
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+                if let identifier = item.id?.uuidString {
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+                }
                 viewContext.delete(item)
             }
             

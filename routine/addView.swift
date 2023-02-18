@@ -19,9 +19,10 @@ struct addView: View {
     @State private var title = ""
     @State private var startHour = 0
     @State private var finishHour = 0
-    @State private var weekDays = 0
+    @State private var weekDay = 0
     @State private var startMin = 0
     @State private var finishMin = 0
+    @State private var id = UUID()
     
     var body: some View {
         NavigationStack {
@@ -87,7 +88,7 @@ struct addView: View {
                 .padding()
                 //Spacer()
                 
-                Picker(selection: $weekDays, label: Text("繰り返す曜日")) {
+                Picker(selection: $weekDay, label: Text("繰り返す曜日")) {
                     Text("毎月曜日").tag(2)
                     Text("毎火曜日").tag(3)
                     Text("毎水曜日").tag(4)
@@ -126,10 +127,10 @@ struct addView: View {
         content.title = "\(title)の開始時刻です"
         content.body = "頑張りましょう！"
         
-        let dateComponent = DateComponents(hour: startHour, minute: startMin, weekday: weekDays)
+        let dateComponent = DateComponents(hour: startHour, minute: startMin, weekday: weekDay)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        let request = UNNotificationRequest(identifier: "com.example.app.list.\(title)", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: id.uuidString, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
     
@@ -138,10 +139,10 @@ struct addView: View {
         content.title = "\(title)の終了時刻です"
         content.body = "お疲れ様でした！"
         
-        let dateComponent = DateComponents(hour: finishHour, minute: finishMin, weekday: weekDays)
+        let dateComponent = DateComponents(hour: finishHour, minute: finishMin, weekday: weekDay)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        let request = UNNotificationRequest(identifier: "com.example.app.list.\(title)", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: id.uuidString, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
     
@@ -153,7 +154,8 @@ struct addView: View {
         newItem.finishHour = (finishHour) as NSNumber
         newItem.startMin = (startMin) as NSNumber
         newItem.finishMin = (finishMin) as NSNumber
-        //newItem.weekDays = weekDays
+        newItem.weekDay = (weekDay) as NSNumber
+        newItem.id = id
         
         try? viewContext.save()
         presentation.wrappedValue.dismiss()
