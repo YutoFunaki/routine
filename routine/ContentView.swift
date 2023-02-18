@@ -85,9 +85,9 @@ struct ContentView: View {
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach { item in
-                if let identifier = item.id?.uuidString {
+                 let id = item.id
+                let identifier = "com.example.app.list.\(String(describing: id)))"
                     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
-                }
                 viewContext.delete(item)
             }
             
