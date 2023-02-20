@@ -19,7 +19,7 @@ struct addView: View {
     @State private var title = ""
     @State private var startHour = 0
     @State private var finishHour = 0
-    @State private var weekDay = 0
+    @State private var weekDay = 2
     @State private var startMin = 0
     @State private var finishMin = 0
     @State private var id = UUID()
@@ -126,9 +126,8 @@ struct addView: View {
         let content = UNMutableNotificationContent()
         content.title = "\(title)の開始時刻です"
         content.body = "頑張りましょう！"
-        content.userInfo = ["id": id]
         
-        let dateComponent = DateComponents(hour: startHour, minute: startMin, weekday: weekDay)
+        let dateComponent = DateComponents(hour: startHour, minute: startMin)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
         let request = UNNotificationRequest(identifier: "com.example.app.list.\(title)", content: content, trigger: trigger)
@@ -140,7 +139,7 @@ struct addView: View {
         content.title = "\(title)の終了時刻です"
         content.body = "お疲れ様でした！"
         
-        let dateComponent = DateComponents(hour: finishHour, minute: finishMin, weekday: weekDay)
+        let dateComponent = DateComponents(hour: finishHour, minute: finishMin)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
         let request = UNNotificationRequest(identifier: "com.example.app.list.\(title)", content: content, trigger: trigger)
