@@ -127,10 +127,10 @@ struct addView: View {
         content.title = "\(title)の開始時刻です"
         content.body = "頑張りましょう！"
         
-        let dateComponent = DateComponents(hour: startHour, minute: startMin)
+        let dateComponent = DateComponents(hour: startHour, minute: startMin, weekday: weekDay)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        let request = UNNotificationRequest(identifier: "com.example.app.list.\(title)", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
     
@@ -139,10 +139,10 @@ struct addView: View {
         content.title = "\(title)の終了時刻です"
         content.body = "お疲れ様でした！"
         
-        let dateComponent = DateComponents(hour: finishHour, minute: finishMin)
+        let dateComponent = DateComponents(hour: finishHour, minute: finishMin, weekday: weekDay)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        let request = UNNotificationRequest(identifier: "com.example.app.list.\(title)", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
     
