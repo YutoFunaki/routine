@@ -24,7 +24,7 @@ struct ContentView: View {
     
     init(){
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: .alert) { granted, error in
+        center.requestAuthorization(options: [.alert,.badge,.sound]) { granted, error in
             if granted {
                 print("許可されました！")
             }else{
@@ -32,6 +32,8 @@ struct ContentView: View {
             }
         }
     }
+    
+    
     
     var body: some View {
         NavigationStack {
@@ -46,6 +48,7 @@ struct ContentView: View {
                                     .frame(width: 300)
                                 Text("開始時刻   \(item.startHour!):\(item.startMin!)")
                                 Text("終了時刻　\(item.finishHour!):\(item.finishMin!)")
+                                Text("毎")
                                 
     
                                 
