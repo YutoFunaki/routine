@@ -121,7 +121,7 @@ struct addView: View {
     }
     
     
-    //通知のやつ
+    //通知設定
     func sendNotificationRequest(){
         let content = UNMutableNotificationContent()
         content.title = "\(title)の開始時刻です"
@@ -130,7 +130,7 @@ struct addView: View {
         let dateComponent = DateComponents(hour: startHour, minute: startMin, weekday: weekDay)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: title, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
     
@@ -142,7 +142,7 @@ struct addView: View {
         let dateComponent = DateComponents(hour: finishHour, minute: finishMin, weekday: weekDay)
         print(dateComponent)  // 以下に表示
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: title, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
     
