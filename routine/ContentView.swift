@@ -90,8 +90,8 @@ struct ContentView: View {
         withAnimation {
             offsets.map { items[$0] }.forEach { item in
                 let center = UNUserNotificationCenter.current()
-                center.removePendingNotificationRequests(withIdentifiers: items[item].title)
-                center.removeDeliveredNotifications(withIdentifiers: items[item].title)
+                center.removePendingNotificationRequests(withIdentifiers: ["\(items[item].title)"])
+                center.removeDeliveredNotifications(withIdentifiers: ["\(items[item].title)"])
                 viewContext.delete(item)
             }
             
